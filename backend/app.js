@@ -2,7 +2,9 @@ const express = require('express');// Déclaration framework express
 const bodyParser = require('body-parser');// Déclaration Body-Parser pour récupérer des objets exploitables
 const mongoose = require('mongoose');// Déclaration Mongoose pour base de Données MongoDB
 
+const sauceRoutes = require('./routes/sauce');
 const userRoutes = require('./routes/user');// Déclaration du dossier des routes utilisateur
+const sauce = require('./models/Sauce');
 
 
 const app = express();
@@ -23,6 +25,7 @@ app.use((req, res, next) => {
 
 app.use(bodyParser.json());
 
+app.use('/api/sauces', sauceRoutes);
 app.use('/api/auth', userRoutes);
 
 module.exports = app;
