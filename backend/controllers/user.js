@@ -21,7 +21,7 @@ exports.login = (req, res, next) => {
     User.findOne({ email : req.body.email })
         .then(user => {
             if (!user) {
-                return res.status(401).json({ error : ' Utilisateur non triouvé ! '});
+                return res.status(401).json({ error : ' Utilisateur non trouvé ! '});
             }
             bcrypt.compare(req.body.password, user.password)
                 .then(valid => {
@@ -30,14 +30,10 @@ exports.login = (req, res, next) => {
                     }
                     res.status(201).json({
                         userId: user._id,
-                        token: jwt.sign(
-                            { userId: user._id },
-                            'RAMDON_TOKEN_SECRET',
-                            { expiresIn: '24h'}
-                        )
+                        token: jwt.sign({ userId: user._id }, 'RANDOM_TOKEN_SECRET', { expiresIn: '24h'}) 
                     });
                 })
-            .catch(errror => res.status(500).json({ error }));
+            .catch(error => res.status(500).json({ error }));
         })
     .catch(error => res.status(500).json({ error }));
 };
