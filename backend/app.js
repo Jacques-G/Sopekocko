@@ -4,8 +4,9 @@ const mongoose = require('mongoose');// Déclaration Mongoose pour base de Donn�
 
 const sauceRoutes = require('./routes/sauce');
 const userRoutes = require('./routes/user');// Déclaration du dossier des routes utilisateur
-const sauce = require('./models/Sauce');
 
+const sauce = require('./models/Sauce');
+const path = require('path'); //nécessaire pour multer
 
 const app = express();
 
@@ -27,5 +28,6 @@ app.use(bodyParser.json());
 
 app.use('/api/sauces', sauceRoutes);
 app.use('/api/auth', userRoutes);
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 module.exports = app;
