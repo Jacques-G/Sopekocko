@@ -1,4 +1,6 @@
 const dotenv = require('dotenv').config(); // Protection de l'acces à ma base de donnée
+const helmet = require('helmet'); // Plugin de protection pour diverses attaques
+
 const express = require('express');// Déclaration framework express
 const bodyParser = require('body-parser');// Déclaration Body-Parser pour récupérer des objets exploitables
 const mongoose = require('mongoose');// Déclaration Mongoose pour base de Données MongoDB
@@ -26,6 +28,7 @@ app.use((req, res, next) => { //Declaration Cors et Methods
     next();
 });
 
+app.use(helmet());
 app.use(bodyParser.json());
 
 app.use('/api/sauces', sauceRoutes);
