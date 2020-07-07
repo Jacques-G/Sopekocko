@@ -1,4 +1,4 @@
-const multer = require('multer');
+const multer = require('multer'); // necessaire pour ajout d'images
 
 const MIME_TYPES = {
     'images/jpg': 'jpg',

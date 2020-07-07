@@ -1,5 +1,5 @@
 const Sauce = require('../models/Sauce');
-const fs = require('fs');
+const fs = require('fs'); // fs = file system, necessaire pour agir sur les dossiers et fichiers systeme afin de pouvoir les supprimer
 
 exports.createSauce = (req, res, next) => {
     const sauceObject = JSON.parse(req.body.sauce);

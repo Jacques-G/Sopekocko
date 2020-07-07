@@ -1,5 +1,5 @@
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt'); // Protection du mot de passe utilisateur
+const jwt = require('jsonwebtoken'); // Token de protection 
 
 const User = require('../models/user');
 
