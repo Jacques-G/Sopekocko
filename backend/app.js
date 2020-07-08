@@ -8,7 +8,6 @@ const mongoose = require('mongoose');// Déclaration Mongoose pour base de Donn�
 const sauceRoutes = require('./routes/sauce'); // Déclaration du dossier des routes Sauces
 const userRoutes = require('./routes/user');// Déclaration du dossier des routes utilisateur
 
-const sauce = require('./models/Sauce'); 
 const path = require('path'); //nécessaire pour multer (importation des fichiers)
 const { limiter } = require('./controllers/user');
 
