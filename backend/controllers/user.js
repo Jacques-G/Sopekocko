@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt'); // Protection du mot de passe utilisateur
 const jwt = require('jsonwebtoken'); // Token de protection 
+const rateLimit = require('express-rate-limit');
 
 const User = require('../models/user');
 
@@ -26,6 +27,7 @@ exports.login = (req, res, next) => {
             bcrypt.compare(req.body.password, user.password)
                 .then(valid => {
                     if (!valid) {
+
                         return res.status(401).json({ message: 'Mot de passe incorrect !'});
                     }
                     res.status(200).json({
@@ -37,3 +39,8 @@ exports.login = (req, res, next) => {
         })
     .catch(error => res.status(500).json({ error }));
 };
+
+exports.limiter = rateLimit({ 
+    windowMs: 2 * 60 * 1000,
+    max: 2
+});

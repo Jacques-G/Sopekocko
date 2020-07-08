@@ -10,6 +10,7 @@ const userRoutes = require('./routes/user');// Déclaration du dossier des route
 
 const sauce = require('./models/Sauce'); 
 const path = require('path'); //nécessaire pour multer (importation des fichiers)
+const { limiter } = require('./controllers/user');
 
 const app = express(); 
 
